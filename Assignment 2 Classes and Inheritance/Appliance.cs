@@ -20,7 +20,8 @@ namespace Assignment_2_Classes_and_Inheritance.Res
         private string color;
         private double price;
         private static List<Appliance> appList = new List<Appliance>(); //turned private
-        
+        private string newQuantity;
+
         public string ItemNum { get => itemNum; set => itemNum = value; }
         public string Brand { get => brand; set => brand = value; }
         public int Quantity { get => quantity; set => quantity = value; }
@@ -28,6 +29,7 @@ namespace Assignment_2_Classes_and_Inheritance.Res
         public string Color { get => color; set => color = value; }
         public double Price { get => price; set => price = value; }
         public static List<Appliance> AppList { get => appList; set => appList = value; } //added
+        public string NewQuantity { get => newQuantity; set => newQuantity = value; }
 
         public Appliance()
         {
@@ -54,21 +56,33 @@ namespace Assignment_2_Classes_and_Inheritance.Res
             foreach (Appliance appliance in AppList )
             {
 
-                if (appliance.ItemNum.Contains(co) && (co.Count() == 9) && (appliance.GetQuanity() > 0)) 
+                if (appliance.ItemNum.Contains(co) && (co.Count() == 9) && (appliance.GetQuantity() > 0)) 
                 {
-                    string newQuantity = appliance.GetCheckout();
-                    ///NEED TO CHANGE QUANTITY
                     
+                    int newQuantity = Convert.ToInt32(appliance.GetCheckout());
+
+                    Appliance newAppliance = new Appliance();
+                    newAppliance.ItemNum = appliance.ItemNum;
+                    newAppliance.Brand = appliance.Brand;
+                    newAppliance.Quantity = newQuantity;
+                    newAppliance.Wattage = appliance.Wattage;
+                    newAppliance.Color = appliance. Color;
+                    newAppliance.Price = appliance.Price;
+                    newAppliance.GetUpdatedList();
+
+                    AppList.Add(newAppliance);
+
+                    Console.WriteLine("new Appliance\n" + newAppliance.ToString());
                     Console.WriteLine("Appliance \'" + co + "\" has been checked out.\n");
                     break;
                 }
-                else if (appliance.ItemNum.Contains(co) && (co.Count() == 9) && (appliance.GetQuanity() <= 0))
+                else if (appliance.ItemNum.Contains(co) && (co.Count() == 9) && (appliance.GetQuantity() <= 0))
                 {
-                    Console.WriteLine("The appliance is not available to be checked out.");
+                    Console.WriteLine("The appliance is not available to be checked out.\n");
                 }
-                else if (!(appliance.ItemNum.Contains(co) && (co.Count() == 9)) && (appliance.GetQuanity() <= 0))
+                else if (!(appliance.ItemNum.Contains(co) && (co.Count() == 9)) && (appliance.GetQuantity() <= 0))
                 {
-                    Console.WriteLine("No appliances found with that item number.");
+                    Console.WriteLine("No appliances found with that item number.\n");
                 }
             }
         }
@@ -179,9 +193,13 @@ namespace Assignment_2_Classes_and_Inheritance.Res
         {
             List <string> updatedList= new List <string>();
             string filePath = "C:\\OOP2 CRPG211\\Module 2\\Assignment 2 Classes and Inheritance\\Assignment 2 Classes and Inheritance\\Res\\appliances.txt";
+
+
+
             foreach (Appliance item in AppList)
             {
-                updatedList.Add(item.ToString());
+
+                updatedList.Add(item.GetUpdatedList());
             }
             File.AppendAllLines(filePath, updatedList);
         }
@@ -236,17 +254,22 @@ namespace Assignment_2_Classes_and_Inheritance.Res
             return fId;
         }
         
-        public virtual int GetQuanity()
+        public virtual int GetQuantity()
         {
             return Quantity;
         }
         public string GetCheckout()
         {
-            int newQ = GetQuanity() - 1;
+            int newQ = GetQuantity() - 1;
             return Convert.ToString(newQ);
         }
+        /*      FORMATES TO TXT FILE     */
+        public virtual string GetUpdatedList()
+        {
+            return ItemNum + ";" + Brand + ";" + Quantity + ";" + Wattage + ";" + Color + ";" + Price;
+        }
 
-
+        /*    FORMATES TO DISPLAY FILE   */
         public virtual string ToString()
         {
             return "ItemNumber: " +  itemNum + "\nBrand: " + Brand + "\nQuantity: " + Quantity + "\nWattage: " + Wattage + "\nColor: " + Color + "\nPrice: " + Price;

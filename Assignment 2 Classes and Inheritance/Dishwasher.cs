@@ -11,10 +11,10 @@ namespace Assignment_2_Classes_and_Inheritance
     {
         //ItemNumber;Brand;Quantity;Wattage;Color;Price;Feature;SoundRating
         private string feature;
-        private string SoundRating;
+        private string soundRating;
 
         public string Feature { get => feature; set => feature = value; }
-        public string SoundRating1 { get => SoundRating; set => SoundRating = value; }
+        public string SoundRating { get => soundRating; set => soundRating = value; }
 
         public Dishwasher()
         {
@@ -25,6 +25,15 @@ namespace Assignment_2_Classes_and_Inheritance
         {
             this.feature = feature;
             this.SoundRating = SoundRating;
+        }
+
+        public int GetQuantity()
+        {
+            return Quantity;
+        }
+        public override string GetUpdatedList()
+        {
+            return base.GetUpdatedList() + Feature + ";" + SoundRating;
         }
 
         public override string ToString()

@@ -26,6 +26,15 @@ namespace Assignment_2_Classes_and_Inheritance
             this.BatteryVoltage = batteryVoltage;
         }
 
+        public int GetQuantity()
+        {
+            return Quantity;
+        }
+
+        public override string GetUpdatedList()
+        {
+            return base.GetUpdatedList() + Grade + ";" + BatteryVoltage;
+        }
 
         public override string ToString()
         {

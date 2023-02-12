@@ -37,6 +37,14 @@ namespace Assignment_2_Classes_and_Inheritance
             }
             
         }
+        public int GetQuantity()
+        {
+            return Quantity;
+        }
+        public override string GetUpdatedList()
+        {
+            return base.GetUpdatedList() + Capacity + ";" + RoomType;
+        }
 
         public override string ToString()
         {

@@ -39,9 +39,14 @@ namespace Assignment_2_Classes_and_Inheritance
             return ItemNum[0]; //private //no static
         }
 
-        public int GetQuanity()
+        public int GetQuantity()
         {
             return Quantity;
+        }
+
+        public override string GetUpdatedList()
+        {
+            return base.GetUpdatedList() + NumDoors + ";" + Height + ";" + Width;
         }
 
         public override string ToString() //overide or virt
