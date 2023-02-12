@@ -51,20 +51,30 @@ namespace Assignment_2_Classes_and_Inheritance.Res
             string co = Console.ReadLine();
             foreach (Appliance appliance in AppList )
             {
-                if (appliance.GetItemNum().Contains(co))
+                if (appliance.GetItemNum() == co) //(appliance.GetItemNum().Contains(co))
                 {
-                    appliance.GetCheckout();
+                    string newQuantity = Convert.ToString(appliance.GetCheckout());
 
-                    AppList.Add(appliance); // new appliance quantity should be added
+                    //string newAppliance = (AppList.Find(appliance => appliance.Quantity == co); // new appliance quantity should be added
+                    
+                    
+                    //appList.Add(newAppliance);
                     Console.WriteLine("Appliance \'" + co + "\" has been checked out.\n");
-                    Console.WriteLine(appliance.GetItemNum() + "checking");
+                    Console.WriteLine( newQuantity + " checking quantity\n" + appliance.GetItemNum() + " itemNum");
                     break;
                 }
+                else if (!(appliance.GetItemNum() == co))
+                {
+                    continue;
+                }
+
                 else
                 {
+                    Console.WriteLine(appliance.GetItemNum());
                     Console.WriteLine("The appliance is not available to be checked out.\n");
                     break;
                 }
+
             }
             
         }
@@ -236,9 +246,10 @@ namespace Assignment_2_Classes_and_Inheritance.Res
         {
             return Quantity;
         }
-        public int GetCheckout()
+        public string GetCheckout()
         {
-            return Quantity - 1 ;
+            int newQ = Quantity - 1;
+            return Convert.ToString(newQ);
         }
 
 
