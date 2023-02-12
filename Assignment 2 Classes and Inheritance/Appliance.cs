@@ -49,34 +49,28 @@ namespace Assignment_2_Classes_and_Inheritance.Res
         {
             Console.WriteLine("Enter the item number of an appliance: ");
             string co = Console.ReadLine();
+
+
             foreach (Appliance appliance in AppList )
             {
-                if (appliance.GetItemNum() == co) //(appliance.GetItemNum().Contains(co))
-                {
-                    string newQuantity = Convert.ToString(appliance.GetCheckout());
 
-                    //string newAppliance = (AppList.Find(appliance => appliance.Quantity == co); // new appliance quantity should be added
+                if (appliance.ItemNum.Contains(co) && (co.Count() == 9) && (appliance.GetQuanity() > 0)) 
+                {
+                    string newQuantity = appliance.GetCheckout();
+                    ///NEED TO CHANGE QUANTITY
                     
-                    
-                    //appList.Add(newAppliance);
                     Console.WriteLine("Appliance \'" + co + "\" has been checked out.\n");
-                    Console.WriteLine( newQuantity + " checking quantity\n" + appliance.GetItemNum() + " itemNum");
                     break;
                 }
-                else if (!(appliance.GetItemNum() == co))
+                else if (appliance.ItemNum.Contains(co) && (co.Count() == 9) && (appliance.GetQuanity() <= 0))
                 {
-                    continue;
+                    Console.WriteLine("The appliance is not available to be checked out.");
                 }
-
-                else
+                else if (!(appliance.ItemNum.Contains(co) && (co.Count() == 9)) && (appliance.GetQuanity() <= 0))
                 {
-                    Console.WriteLine(appliance.GetItemNum());
-                    Console.WriteLine("The appliance is not available to be checked out.\n");
-                    break;
+                    Console.WriteLine("No appliances found with that item number.");
                 }
-
             }
-            
         }
 
 
@@ -248,7 +242,7 @@ namespace Assignment_2_Classes_and_Inheritance.Res
         }
         public string GetCheckout()
         {
-            int newQ = Quantity - 1;
+            int newQ = GetQuanity() - 1;
             return Convert.ToString(newQ);
         }
 
