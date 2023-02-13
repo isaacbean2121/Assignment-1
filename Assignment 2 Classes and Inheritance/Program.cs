@@ -26,7 +26,7 @@ namespace Assignment_2_Classes_and_Inheritance
             MainMenu();
             
             
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
         public static void UserChoice(string userInput)
@@ -35,15 +35,19 @@ namespace Assignment_2_Classes_and_Inheritance
             {
                 case "1": //checkout
                     Appliance.AppCheckout();
+                    MainMenu();
                     break;
                 case "2": //find by Brand
                     Appliance.findApplianceBrand();
+                    MainMenu();
                     break;
                 case "3": //display by type
                     Appliance.findByType();
+                    MainMenu();
                     break;
                 case "4": // random
                     Appliance.RandomAppliances();
+                    MainMenu();
                     break;
                 case "5": //save and exit
                     Appliance.saveToFile();
@@ -53,7 +57,6 @@ namespace Assignment_2_Classes_and_Inheritance
                     MainMenu();
                     break;
             }
-            MainMenu();//
         }
 
         public static void MainMenu()
