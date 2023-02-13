@@ -70,6 +70,7 @@ namespace Assignment_2_Classes_and_Inheritance.Res
                     newAppliance.Price = appliance.Price;
                     newAppliance.GetUpdatedList();
 
+
                     AppList.Add(newAppliance);
 
                     Console.WriteLine("new Appliance\n" + newAppliance.ToString());
@@ -199,7 +200,7 @@ namespace Assignment_2_Classes_and_Inheritance.Res
             foreach (Appliance item in AppList)
             {
 
-                updatedList.Add(item.GetUpdatedList());
+                updatedList.Append(item.GetUpdatedList());
             }
             File.AppendAllLines(filePath, updatedList);
         }
