@@ -116,11 +116,16 @@ namespace Assignment_2_Classes_and_Inheritance.Res
             switch (appType)
             {
                 case "1":
+                    Console.WriteLine("Enter number of doors: 2 (double door), 3 (three doors) or 4 (four doors):");
+                    int nd = Convert.ToInt32(Console.ReadLine());
+
                     Console.WriteLine("\nMatching Refridgerator");
+
+                    ///string s = AppList.Find(a => a.GetDoorNum() == nd);
 
                     foreach(Appliance item in AppList)
                     {
-                        if(item.GetFirstCharId() == '1')
+                        if (item.GetFirstCharId() == '1' )// && (AppList.Contains(nd)))
                         {
                             Console.WriteLine(item.ToString());
                         }
@@ -264,6 +269,7 @@ namespace Assignment_2_Classes_and_Inheritance.Res
             int newQ = GetQuantity() - 1;
             return Convert.ToString(newQ);
         }
+
         /*      FORMATES TO TXT FILE     */
         public virtual string GetUpdatedList()
         {
